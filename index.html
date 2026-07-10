@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashStock</title>
+  <meta name="description" content="Excedentes de stock global, retornos premium e artigos de oportunidade rigorosamente selecionados.">
+  <!-- Tailwind CSS CDN para diseño rápido -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            zinc: { 950: '#0A0A0A' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen bg-zinc-950 font-sans text-zinc-100 antialiased">
+
+  <!-- HEADER / NAV -->
+  <header class="sticky top-0 z-40 w-full border-b border-zinc-800 bg-zinc-950/95 backdrop-blur">
+    <nav class="mx-auto flex h-14 max-w-screen-xl items-center justify-between px-4">
+      <a class="text-base font-semibold tracking-tight text-white" href="/">FlashStock</a>
+      <div class="hidden items-center gap-4 md:flex">
+        <a class="text-xs text-zinc-400 hover:text-white transition-colors" href="#como-funciona">Como Funciona</a>
+        <a class="text-xs text-zinc-400 hover:text-white transition-colors" href="#stock">Stock</a>
+      </div>
+      <div>
+        <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs bg-red-600 hover:bg-red-500 text-white" href="#alertas-vip">Alertas VIP</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative min-h-[92vh] flex items-center overflow-hidden bg-zinc-950 py-12">
+    <!-- Efecto de gradiente radial rojo de fondo -->
+    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 60% at 60% 40%, rgba(220,38,38,0.15) 0%, transparent 70%)"></div>
+    
+    <div class="max-w-screen-xl mx-auto px-4 relative z-10 w-full">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- TEXTO HERO -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+          <div class="flex flex-col gap-4">
+            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 font-semibold text-red-300 bg-red-950/60 border-red-800/50 text-xs w-fit">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-red-500 mr-1.5 animate-pulse"></span>
+              Stock em rotação — novos lotes todas as semanas
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight font-bold text-white">
+              O Grande Armazém de <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-400">Oportunidades e Móveis Únicos</span> em Portugal
+            </h1>
+            <p class="text-base text-zinc-400 max-w-xl leading-relaxed">
+              Stock dinâmico de excedentes globais e retornos premium. Artigos inspecionados individualmente. Lotes novos todas as semanas.
+            </p>
+          </div>
+          
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="#alertas-vip" class="inline-flex items-center justify-center text-sm font-medium transition-colors h-10 rounded-md px-8 bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-900/40">
+              Descobre o que chegou esta semana
+            </a>
+            <a href="#como-funciona" class="inline-flex items-center justify-center text-sm font-medium transition-colors border bg-transparent h-10 rounded-md px-8 border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white">
+              Como funciona
+            </a>
+          </div>
+          
+          <p class="text-sm text-red-400 font-medium">Aberto apenas 3 dias por semana. O que vês hoje, amanhã já não existe.</p>
+        </div>
+
+        <!-- TARJETA DE PRODUCTOS DERECHA -->
+        <div class="lg:col-span-5 flex justify-end">
+          <div class="relative w-full max-w-sm">
+            <div class="absolute -inset-4 bg-gradient-to-br from-red-900/30 to-transparent rounded-2xl blur-2xl"></div>
+            <div class="relative bg-zinc-900 border border-zinc-800 rounded-2xl shadow-xl overflow-hidden">
+              <div class="bg-gradient-to-br from-red-700 to-red-800 px-6 py-5">
+                <p class="text-white font-semibold text-sm">Stock disponível agora</p>
+                <p class="text-red-200 text-xs">Actualizado esta semana</p>
+              </div>
+              
+              <div class="p-5 flex flex-col gap-3">
+                <!-- Item 1 -->
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/60 border border-zinc-700/60 hover:border-red-800/60 transition-colors">
+                  <div class="bg-zinc-700 rounded-lg w-10 h-10 flex items-center justify-center text-red-400 font-bold text-xs shrink-0">TE</div>
+                  <div class="flex-1 min-w-0">
+                    <p class="font-medium text-sm truncate text-zinc-200">Televisão 55" 4K LED</p>
+                    <p class="text-xs text-zinc-500">Tecnologia</p>
+                  </div>
+                  <div class="text-right shrink-0">
+                    <p class="font-bold text-red-400 text-sm">€189</p>
+                    <p class="text-xs text-zinc-500 line-through">€480</p>
+                  </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/60 border border-zinc-700/60 hover:border-red-800/60 transition-colors">
+                  <div class="bg-zinc-700 rounded-lg w-10 h-10 flex items-center justify-center text-red-400 font-bold text-xs shrink-0">MO</div>
+                  <div class="flex-1 min-w-0">
+                    <p class="font-medium text-sm truncate text-zinc-200">Sofá 3 lugares retráctil</p>
+                    <p class="text-xs text-zinc-500">Mobiliário</p>
+                  </div>
+                  <div class="text-right shrink-0">
+                    <p class="font-bold text-red-400 text-sm">€320</p>
+                    <p class="text-xs text-zinc-500 line-through">€890</p>
+                  </div>
+                </div>
+                
+                <a href="#alertas-vip" class="mt-2 flex items-center justify-center py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-sm font-semibold transition-all">Ver alertas VIP</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN FORMULARIO / CAPTACIÓN -->
+  <section id="alertas-vip" class="py-20 bg-zinc-900 border-t border-zinc-800">
+    <div class="max-w-md mx-auto px-4 flex flex-col gap-6 text-center">
+      <div>
+        <span class="text-xs font-bold tracking-widest text-red-500 uppercase">Lista VIP</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Recebe Alertas Antes de Toda a Gente</h2>
+        <p class="text-sm text-zinc-400 mt-2">Entra na lista VIP. Sê o primeiro a saber quando chegam lotes novos — antes de publicarmos nas redes.</p>
+      </div>
+      
+      <!-- Para captar emails gratis, puedes conectarlo a un servicio como Formspree o Tally -->
+      <form class="w-full flex flex-col gap-4 text-left">
+        <div>
+          <label class="text-xs font-medium text-zinc-300" for="email">Email</label>
+          <input type="email" id="email" class="w-full mt-1 h-10 rounded-md bg-zinc-950 border border-zinc-700 px-3 text-sm text-white focus:outline-none focus:border-red-600" placeholder="o.teu@email.com" required>
+        </div>
+        <button type="submit" class="w-full h-10 rounded-md bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition-colors mt-2">
+          Quero Acesso Antecipado
+        </button>
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>
