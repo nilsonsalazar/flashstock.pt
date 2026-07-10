@@ -1,143 +1,231 @@
 <!DOCTYPE html>
-<html lang="pt" class="dark">
+<html lang="pt" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlashStock</title>
-  <meta name="description" content="Excedentes de stock global, retornos premium e artigos de oportunidade rigorosamente selecionados.">
-  <!-- Tailwind CSS CDN para diseño rápido -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            zinc: { 950: '#0A0A0A' }
-          }
+    <meta charSet="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'SF Pro Display', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
+    <meta name="theme-color" content="#dc2626"/>
+    <title>FlashStock</title>
+    <meta name="description" content="Excedentes de stock e liquidações das grandes plataformas mundiais. Artigos funcionais e testados. Lotes novos todas as semanas."/>
+    <meta name="application-name" content="FlashStock"/>
+    <meta property="og:title" content="FlashStock"/>
+    <meta property="og:description" content="Excedentes de stock e liquidações das grandes plataformas mundiais. Artigos funcionais e testados. Lotes novos todas as semanas."/>
+    <meta property="og:type" content="website"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="FlashStock"/>
+    <meta name="twitter:description" content="Excedentes de stock e liquidações das grandes plataformas mundiais. Artigos funcionais e testados. Lotes novos todas as semanas."/>
 </head>
-<body class="min-h-screen bg-zinc-950 font-sans text-zinc-100 antialiased">
+<body class="min-h-screen bg-black font-sans text-zinc-200 antialiased">
 
-  <!-- HEADER / NAV -->
-  <header class="sticky top-0 z-40 w-full border-b border-zinc-800 bg-zinc-950/95 backdrop-blur">
-    <nav class="mx-auto flex h-14 max-w-screen-xl items-center justify-between px-4">
-      <a class="text-base font-semibold tracking-tight text-white" href="/">FlashStock</a>
-      <div class="hidden items-center gap-4 md:flex">
-        <a class="text-xs text-zinc-400 hover:text-white transition-colors" href="#como-funciona">Como Funciona</a>
-        <a class="text-xs text-zinc-400 hover:text-white transition-colors" href="#stock">Stock</a>
-      </div>
-      <div>
-        <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs bg-red-600 hover:bg-red-500 text-white" href="#alertas-vip">Alertas VIP</a>
-      </div>
-    </nav>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="relative min-h-[92vh] flex items-center overflow-hidden bg-zinc-950 py-12">
-    <!-- Efecto de gradiente radial rojo de fondo -->
-    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 60% at 60% 40%, rgba(220,38,38,0.15) 0%, transparent 70%)"></div>
-    
-    <div class="max-w-screen-xl mx-auto px-4 relative z-10 w-full">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- TEXTO HERO -->
-        <div class="lg:col-span-7 flex flex-col gap-6">
-          <div class="flex flex-col gap-4">
-            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 font-semibold text-red-300 bg-red-950/60 border-red-800/50 text-xs w-fit">
-              <span class="inline-block w-1.5 h-1.5 rounded-full bg-red-500 mr-1.5 animate-pulse"></span>
-              Stock em rotação — novos lotes todas as semanas
+    <header class="sticky top-0 z-40 w-full border-b border-zinc-900 bg-zinc-950/95 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/80">
+        <nav aria-label="Primary" class="mx-auto flex h-14 max-w-screen-xl items-center justify-between px-4">
+            <a class="text-base font-black tracking-wider text-white uppercase" href="/">
+                Flash<span class="text-red-600">Stock</span>
+            </a>
+            <div class="hidden items-center gap-2 md:flex">
+                <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#como-funciona">Como Funciona</a>
+                <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#stock">Stock</a>
+                <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#armazens">Armazéns</a>
             </div>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight font-bold text-white">
-              O Grande Armazém de <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-400">Oportunidades e Móveis Únicos</span> em Portugal
-            </h1>
-            <p class="text-base text-zinc-400 max-w-xl leading-relaxed">
-              Stock dinâmico de excedentes globais e retornos premium. Artigos inspecionados individualmente. Lotes novos todas as semanas.
-            </p>
-          </div>
-          
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="#alertas-vip" class="inline-flex items-center justify-center text-sm font-medium transition-colors h-10 rounded-md px-8 bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-900/40">
-              Descobre o que chegou esta semana
-            </a>
-            <a href="#como-funciona" class="inline-flex items-center justify-center text-sm font-medium transition-colors border bg-transparent h-10 rounded-md px-8 border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white">
-              Como funciona
-            </a>
-          </div>
-          
-          <p class="text-sm text-red-400 font-medium">Aberto apenas 3 dias por semana. O que vês hoje, amanhã já não existe.</p>
-        </div>
+            <div class="flex items-center gap-1">
+                <a class="inline-flex items-center justify-center font-bold shadow h-8 rounded-md px-4 text-xs bg-red-600 hover:bg-red-500 text-white transition-colors" href="#alertas-vip">Alertas VIP</a>
+            </div>
+        </nav>
+    </header>
 
-        <!-- TARJETA DE PRODUCTOS DERECHA -->
-        <div class="lg:col-span-5 flex justify-end">
-          <div class="relative w-full max-w-sm">
-            <div class="absolute -inset-4 bg-gradient-to-br from-red-900/30 to-transparent rounded-2xl blur-2xl"></div>
-            <div class="relative bg-zinc-900 border border-zinc-800 rounded-2xl shadow-xl overflow-hidden">
-              <div class="bg-gradient-to-br from-red-700 to-red-800 px-6 py-5">
-                <p class="text-white font-semibold text-sm">Stock disponível agora</p>
-                <p class="text-red-200 text-xs">Actualizado esta semana</p>
-              </div>
-              
-              <div class="p-5 flex flex-col gap-3">
-                <!-- Item 1 -->
-                <div class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/60 border border-zinc-700/60 hover:border-red-800/60 transition-colors">
-                  <div class="bg-zinc-700 rounded-lg w-10 h-10 flex items-center justify-center text-red-400 font-bold text-xs shrink-0">TE</div>
-                  <div class="flex-1 min-w-0">
-                    <p class="font-medium text-sm truncate text-zinc-200">Televisão 55" 4K LED</p>
-                    <p class="text-xs text-zinc-500">Tecnologia</p>
-                  </div>
-                  <div class="text-right shrink-0">
-                    <p class="font-bold text-red-400 text-sm">€189</p>
-                    <p class="text-xs text-zinc-500 line-through">€480</p>
-                  </div>
-                </div>
-                <!-- Item 2 -->
-                <div class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/60 border border-zinc-700/60 hover:border-red-800/60 transition-colors">
-                  <div class="bg-zinc-700 rounded-lg w-10 h-10 flex items-center justify-center text-red-400 font-bold text-xs shrink-0">MO</div>
-                  <div class="flex-1 min-w-0">
-                    <p class="font-medium text-sm truncate text-zinc-200">Sofá 3 lugares retráctil</p>
-                    <p class="text-xs text-zinc-500">Mobiliário</p>
-                  </div>
-                  <div class="text-right shrink-0">
-                    <p class="font-bold text-red-400 text-sm">€320</p>
-                    <p class="text-xs text-zinc-500 line-through">€890</p>
-                  </div>
+    <section class="relative min-h-[92vh] flex items-center overflow-hidden bg-black py-12 md:py-0">
+        <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(220, 32, 32, 0.07) 0%, transparent 70%)"></div>
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image:linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);background-size:3rem 3rem"></div>
+        
+        <div class="mx-auto max-w-screen-xl px-4 relative z-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
+                    
+                    <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 font-semibold transition-colors w-fit text-red-400 bg-red-950/40 border-red-900/50 text-xs">
+                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-red-500 mr-1.5 animate-pulse"></span>
+                        Stock em rotação — novos lotes todas as semanas
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight font-black text-white">
+                        O Grande Armazém de <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-500">Oportunidades Líquidas</span> em Portugal.
+                    </h1>
+                    
+                    <p class="text-base text-zinc-400 max-w-xl leading-relaxed">
+                        Excedentes de stock e liquidações das grandes plataformas mundiais. Artigos funcionais e testados. Lotes novos todas as semanas.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-3 pt-2 w-full sm:w-auto">
+                        <a href="https://wa.me/#" target="_blank" class="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold px-6 py-4 text-sm shadow-xl shadow-red-900/30 transition-all transform hover:scale-[1.01]">
+                            <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-3.559c1.649.979 3.26 1.489 4.854 1.491 5.462.002 9.904-4.43 9.907-9.895.002-2.648-1.02-5.139-2.879-7c-1.859-1.862-4.332-2.887-6.98-2.888-5.465 0-9.907 4.432-9.91 9.897-.001 1.708.455 3.378 1.32 4.884l-.991 3.62 3.71-.973zm13.114-6.388c-.287-.144-1.701-.84-1.963-.935-.262-.095-.453-.144-.643.144-.19.287-.738.935-.904 1.127-.166.19-.332.215-.619.072-.287-.144-1.21-.446-2.306-1.425-.853-.761-1.428-1.7-1.595-1.988-.166-.287-.018-.442.125-.584.129-.128.287-.335.43-.502.144-.167.191-.287.287-.478.095-.19.047-.359-.024-.502-.071-.144-.643-1.553-.881-2.127-.231-.554-.467-.48-.643-.489-.166-.008-.357-.01-.55-.01-.193 0-.507.072-.772.359-.266.287-1.011.988-1.011 2.409s1.034 2.796 1.177 2.988c.143.19 2.036 3.108 4.931 4.36.688.298 1.226.476 1.646.609.692.22 1.322.189 1.82.115.553-.083 1.701-.696 1.942-1.368.24-.672.24-1.246.168-1.368-.071-.122-.263-.215-.55-.359z"/>
+                            </svg>
+                            Aceder ao Canal Oficial de Alertas (WhatsApp)
+                        </a>
+                    </div>
+                    <p class="text-xs text-red-500 font-bold tracking-wide uppercase mt-1">⚠️ O que encontras hoje, amanhã já voou.</p>
                 </div>
                 
-                <a href="#alertas-vip" class="mt-2 flex items-center justify-center py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-sm font-semibold transition-all">Ver alertas VIP</a>
-              </div>
+                <div class="lg:col-span-5 hidden lg:flex justify-end">
+                    <div class="relative w-full max-w-sm">
+                        <div class="absolute -inset-2 bg-gradient-to-b from-red-900/20 to-transparent rounded-2xl blur-xl"></div>
+                        <div class="relative bg-zinc-950 border border-zinc-900 rounded-2xl shadow-2xl overflow-hidden">
+                            <div class="bg-zinc-900 px-5 py-4 border-b border-zinc-800">
+                                <p class="text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Última Entrada de Lotes
+                                </p>
+                            </div>
+                            <div class="p-4 flex flex-col gap-2.5">
+                                <div class="flex items-center justify-between p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/60">
+                                    <div>
+                                        <p class="font-bold text-sm text-zinc-200">Smart TV 4K 55"</p>
+                                        <p class="text-xs text-zinc-500">Lote Multimédia</p>
+                                    </div>
+                                    <span class="text-xs bg-red-950/50 text-red-400 border border-red-900/30 px-2 py-0.5 rounded font-mono font-bold">Liquidado</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/60">
+                                    <div>
+                                        <p class="font-bold text-sm text-zinc-200">Sofá Retrátil Estofado</p>
+                                        <p class="text-xs text-zinc-500">Lote Mobiliário</p>
+                                    </div>
+                                    <span class="text-xs bg-red-950/50 text-red-400 border border-red-900/30 px-2 py-0.5 rounded font-mono font-bold">Liquidado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN FORMULARIO / CAPTACIÓN -->
-  <section id="alertas-vip" class="py-20 bg-zinc-900 border-t border-zinc-800">
-    <div class="max-w-md mx-auto px-4 flex flex-col gap-6 text-center">
-      <div>
-        <span class="text-xs font-bold tracking-widest text-red-500 uppercase">Lista VIP</span>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Recebe Alertas Antes de Toda a Gente</h2>
-        <p class="text-sm text-zinc-400 mt-2">Entra na lista VIP. Sê o primeiro a saber quando chegam lotes novos — antes de publicarmos nas redes.</p>
-      </div>
-      
-      <!-- Para captar emails gratis, puedes conectarlo a un servicio como Formspree o Tally -->
-      <form class="w-full flex flex-col gap-4 text-left">
-        <div>
-          <label class="text-xs font-medium text-zinc-300" for="email">Email</label>
-          <input type="email" id="email" class="w-full mt-1 h-10 rounded-md bg-zinc-950 border border-zinc-700 px-3 text-sm text-white focus:outline-none focus:border-red-600" placeholder="o.teu@email.com" required>
+    <section id="como-funciona" class="py-16 bg-zinc-950 border-y border-zinc-900">
+        <div class="mx-auto max-w-screen-xl px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="flex flex-col gap-3 p-6 rounded-xl bg-black border border-zinc-900">
+                    <div class="flex h-10 w-10 rounded-lg bg-zinc-900 border border-zinc-800 text-red-500 items-center justify-center font-black text-sm">01</div>
+                    <h3 class="font-bold text-base text-white">Rotação Constante</h3>
+                    <p class="text-sm text-zinc-400 leading-relaxed">O nosso stock muda drasticamente todas as semanas. O que encontras hoje, amanhã já voou.</p>
+                </div>
+                <div class="flex flex-col gap-3 p-6 rounded-xl bg-black border border-zinc-900">
+                    <div class="flex h-10 w-10 rounded-lg bg-zinc-900 border border-zinc-800 text-red-500 items-center justify-center font-black text-sm">02</div>
+                    <h3 class="font-bold text-base text-white">Artigos Inspecionados</h3>
+                    <p class="text-sm text-zinc-400 leading-relaxed">Filtramos e verificamos o estado de cada unidade para garantir transparência e funcionalidade total. Não compras às cegas.</p>
+                </div>
+                <div class="flex flex-col gap-3 p-6 rounded-xl bg-black border border-zinc-900">
+                    <div class="flex h-10 w-10 rounded-lg bg-zinc-900 border border-zinc-800 text-red-500 items-center justify-center font-black text-sm">03</div>
+                    <h3 class="font-bold text-base text-white">Apenas na Loja Física</h3>
+                    <p class="text-sm text-zinc-400 leading-relaxed">Vês as oportunidades online, reservas e levantas diretamente num dos nossos dois armazéns.</p>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="w-full h-10 rounded-md bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition-colors mt-2">
-          Quero Acesso Antecipado
-        </button>
-      </form>
-    </div>
-  </section>
+    </section>
+
+    <section id="stock" class="py-16 bg-black">
+        <div class="mx-auto max-w-screen-xl px-4">
+            <div class="flex flex-col items-center text-center gap-3 mb-12">
+                <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">O Tipo de Artigos que Encontras</h2>
+                <p class="text-sm text-zinc-500 max-w-md">Variedade fluida de alta rotação proveniente de liquidações globais.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="rounded-xl border border-zinc-900 shadow-sm relative overflow-hidden bg-zinc-950 group hover:border-zinc-800 transition-all">
+                    <span class="absolute top-3 left-3 z-10 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5">Lotes Fluídos</span>
+                    <div class="p-5 flex flex-col gap-4">
+                        <div class="aspect-[16/10] bg-zinc-900 rounded-lg flex flex-col items-center justify-center border border-zinc-800/50">
+                            <svg class="h-8 w-8 text-zinc-700 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3M4.125 16.5h15.75c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.253 3 4.875V15.375c0 .621.504 1.125 1.125 1.125z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <h3 class="text-base font-bold text-zinc-200">Tecnologia & Imagem</h3>
+                        </div>
+                        <a href="https://wa.me/#" target="_blank" class="w-full text-center bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-bold text-xs py-2.5 rounded-lg border border-zinc-800 transition-colors">Ver no WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="rounded-xl border border-zinc-900 shadow-sm relative overflow-hidden bg-zinc-950 group hover:border-zinc-800 transition-all">
+                    <span class="absolute top-3 left-3 z-10 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5">Apenas 1 unidade</span>
+                    <div class="p-5 flex flex-col gap-4">
+                        <div class="aspect-[16/10] bg-zinc-900 rounded-lg flex flex-col items-center justify-center border border-zinc-800/50">
+                            <svg class="h-8 w-8 text-zinc-700 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 7.5v.008H12.75V7.5zm0 3.5v.008H12.75V11zm0 3.5v.008H12.75V14.5zm-3-7.5v.008H9.75V7.5zm0 3.5v.008H9.75V11zm0 3.5v.008H9.75V14.5m1.5 7.5h7.5" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <h3 class="text-base font-bold text-zinc-200">Eletrodomésticos & Lar</h3>
+                        </div>
+                        <a href="https://wa.me/#" target="_blank" class="w-full text-center bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-bold text-xs py-2.5 rounded-lg border border-zinc-800 transition-colors">Ver no WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="rounded-xl border border-zinc-900 shadow-sm relative overflow-hidden bg-zinc-950 group hover:border-zinc-800 transition-all">
+                    <span class="absolute top-3 left-3 z-10 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5">Lotes Fluídos</span>
+                    <div class="p-5 flex flex-col gap-4">
+                        <div class="aspect-[16/10] bg-zinc-900 rounded-lg flex flex-col items-center justify-center border border-zinc-800/50">
+                            <svg class="h-8 w-8 text-zinc-700 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <h3 class="text-base font-bold text-zinc-200">Mobiliário Oportunidade</h3>
+                        </div>
+                        <a href="https://wa.me/#" target="_blank" class="w-full text-center bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-bold text-xs py-2.5 rounded-lg border border-zinc-800 transition-colors">Ver no WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-8 text-center text-sm text-zinc-500 italic">Este é o tipo de artigos que podes encontrar. O stock atual só existe no showroom.</p>
+        </div>
+    </section>
+
+    <section id="alertas-vip" class="py-16 bg-zinc-900">
+        <div class="mx-auto max-w-screen-xl px-4">
+            <div class="max-w-md mx-auto flex flex-col items-center text-center gap-6">
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-2xl font-black text-white uppercase tracking-tight">Queres acesso antecipado?</h2>
+                    <p class="text-sm text-zinc-400 leading-relaxed">Junta-te à lista VIP para receber alertas no teu email antes de publicarmos no TikTok.</p>
+                </div>
+                <form class="w-full flex flex-col gap-4">
+                    <div class="flex flex-col gap-1.5 text-left">
+                        <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider" for="vip-email">Email</label>
+                        <input type="email" class="w-full h-11 rounded-lg border border-zinc-800 bg-zinc-950 px-4 text-sm text-white placeholder:text-zinc-700 focus:outline-none focus:border-red-600 transition-colors" id="vip-email" placeholder="o.teu@email.com" required/>
+                    </div>
+                    <button class="w-full h-11 rounded-lg bg-red-600 hover:bg-red-500 font-bold text-sm text-white shadow-lg shadow-red-900/20 transition-colors" type="submit">Quero Acesso Antecipado</button>
+                    <p class="text-[11px] text-zinc-600">Sem spam. Apenas alertas de stock real.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="armazens" class="bg-black border-t border-zinc-900 py-12 text-zinc-500">
+        <div class="mx-auto max-w-screen-xl px-4 flex flex-col gap-8">
+            <div class="grid sm:grid-cols-2 gap-8 border-b border-zinc-900 pb-8">
+                <div class="flex flex-col gap-2">
+                    <h4 class="font-bold text-sm text-zinc-300 uppercase tracking-wider">Armazém 1 - Portugal</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Disponível para verificação de lotes e levantamento de artigos reservados.</p>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <h4 class="font-bold text-sm text-zinc-300 uppercase tracking-wider">Armazém 2 - Portugal</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Ponto de recolha local para escoamento rápido de excedentes e mobiliário de oportunidade.</p>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <p class="text-xs font-bold text-zinc-500">© 2026 Flash Stock (flashstock.pt). Todos os direitos reservados.</p>
+                <a href="https://wa.me/#" target="_blank" class="inline-flex items-center gap-2 rounded-lg bg-red-600 hover:bg-red-500 px-4 py-2 text-xs font-bold text-white transition-colors shadow-md">
+                    Canal Oficial de Alertas (WhatsApp)
+                </a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
