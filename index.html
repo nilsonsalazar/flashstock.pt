@@ -28,7 +28,7 @@
 </head>
 <body class="min-h-screen bg-black font-sans text-zinc-200 antialiased">
 
-<header class="sticky top-0 z-40 w-full border-b border-zinc-900 bg-zinc-950/95 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/80">
+    <header class="sticky top-0 z-40 w-full border-b border-zinc-900 bg-zinc-950/95 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/80">
         <nav aria-label="Primary" class="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4">
             <a class="text-xl md:text-2xl font-black tracking-tighter text-white " href="/">
                 Flash<span class="text-red-600">Stock</span>
@@ -36,7 +36,7 @@
             
             <div class="hidden items-center gap-2 md:flex">
                 <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#como-funciona">Como Funciona</a>
-                <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#stock">Stock</a>
+                <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#stock">Categorias</a>
                 <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#armazens">Armazéns</a>
             </div>
             
@@ -81,13 +81,17 @@
                 <div class="lg:col-span-5 hidden lg:flex justify-end">
                     <div class="relative w-full max-w-sm">
                         <div class="absolute -inset-2 bg-gradient-to-b from-red-900/20 to-transparent rounded-2xl blur-xl"></div>
-                        <div class="relative bg-zinc-950 border border-zinc-900 rounded-2xl shadow-2xl overflow-hidden">
-                            <div class="bg-zinc-900 px-5 py-4 border-b border-zinc-800">
+                        <div class="relative bg-zinc-950 border border-zinc-900 rounded-2xl shadow-2xl overflow-hidden group">
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Armazém Logístico" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"/>
+                                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent"></div>
+                            </div>
+                            <div class="absolute top-4 left-4 bg-zinc-900/90 border border-zinc-800 px-3 py-1 rounded-md">
                                 <p class="text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2">
                                     <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Última Entrada de Lotes
                                 </p>
                             </div>
-                            <div class="p-4 flex flex-col gap-2.5">
+                            <div class="p-4 flex flex-col gap-2.5 bg-zinc-950">
                                 <div class="flex items-center justify-between p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/60">
                                     <div>
                                         <p class="font-bold text-sm text-zinc-200">Smart TV 4K 55"</p>
@@ -140,13 +144,12 @@
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
                 <div class="rounded-xl border border-zinc-900 shadow-sm relative overflow-hidden bg-zinc-950 group hover:border-zinc-800 transition-all">
                     <span class="absolute top-3 left-3 z-10 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5">Lotes Fluídos</span>
                     <div class="p-5 flex flex-col gap-4">
-                        <div class="aspect-[16/10] bg-zinc-900 rounded-lg flex flex-col items-center justify-center border border-zinc-800/50">
-                            <svg class="h-8 w-8 text-zinc-700 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3M4.125 16.5h15.75c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.253 3 4.875V15.375c0 .621.504 1.125 1.125 1.125z" />
-                            </svg>
+                        <div class="aspect-[16/10] w-full overflow-hidden rounded-lg border border-zinc-800/50 bg-zinc-900">
+                            <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=500&q=80" alt="Tecnologia e Imagem" class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>
                         </div>
                         <div class="flex flex-col gap-1">
                             <h3 class="text-base font-bold text-zinc-200">Tecnologia & Imagem</h3>
@@ -158,10 +161,8 @@
                 <div class="rounded-xl border border-zinc-900 shadow-sm relative overflow-hidden bg-zinc-950 group hover:border-zinc-800 transition-all">
                     <span class="absolute top-3 left-3 z-10 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5">Apenas 1 unidade</span>
                     <div class="p-5 flex flex-col gap-4">
-                        <div class="aspect-[16/10] bg-zinc-900 rounded-lg flex flex-col items-center justify-center border border-zinc-800/50">
-                            <svg class="h-8 w-8 text-zinc-700 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 7.5v.008H12.75V7.5zm0 3.5v.008H12.75V11zm0 3.5v.008H12.75V14.5zm-3-7.5v.008H9.75V7.5zm0 3.5v.008H9.75V11zm0 3.5v.008H9.75V14.5m1.5 7.5h7.5" />
-                            </svg>
+                        <div class="aspect-[16/10] w-full overflow-hidden rounded-lg border border-zinc-800/50 bg-zinc-900">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80" alt="Eletrodomésticos" class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>
                         </div>
                         <div class="flex flex-col gap-1">
                             <h3 class="text-base font-bold text-zinc-200">Eletrodomésticos & Lar</h3>
@@ -173,10 +174,8 @@
                 <div class="rounded-xl border border-zinc-900 shadow-sm relative overflow-hidden bg-zinc-950 group hover:border-zinc-800 transition-all">
                     <span class="absolute top-3 left-3 z-10 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5">Lotes Fluídos</span>
                     <div class="p-5 flex flex-col gap-4">
-                        <div class="aspect-[16/10] bg-zinc-900 rounded-lg flex flex-col items-center justify-center border border-zinc-800/50">
-                            <svg class="h-8 w-8 text-zinc-700 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
-                            </svg>
+                        <div class="aspect-[16/10] w-full overflow-hidden rounded-lg border border-zinc-800/50 bg-zinc-900">
+                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=500&q=80" alt="Mobiliário Oportunidade" class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>
                         </div>
                         <div class="flex flex-col gap-1">
                             <h3 class="text-base font-bold text-zinc-200">Mobiliário Oportunidade</h3>
