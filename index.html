@@ -214,20 +214,53 @@
             line-height: 1;
         }
 
-        .hero {
-            min-height: calc(100vh - 4.75rem);
-            display: grid;
-            align-items: center;
-            padding: clamp(4rem, 9vw, 7.5rem) 0 4rem;
-            overflow: hidden;
-        }
+        /* Ajuste de la sección Hero para usar fondo completo tipo Banner/PNG */
+.hero {
+    min-height: calc(100vh - 4.75rem);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: clamp(4rem, 9vw, 7.5rem) 0;
+    overflow: hidden;
+    /* Fondo con imagen de stock o tu PNG e iluminación sombría industrial */
+    background: 
+        linear-gradient(90deg, rgba(11, 11, 12, 0.92) 0%, rgba(11, 11, 12, 0.75) 45%, rgba(11, 11, 12, 0.3) 100%),
+        url('https://www.flashstock.pt/assets/flashstock-social.jpg') center/cover no-repeat;
+}
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
-            align-items: center;
-            gap: clamp(3rem, 7vw, 6.5rem);
-        }
+/* Reestructuración del layout a una sola columna principal a la izquierda */
+.hero-grid {
+    display: block;
+    max-width: 48rem;
+}
+
+/* Tipografía de marca/título más agresiva e industrial */
+.hero h1 {
+    max-width: 14ch;
+    margin: 0;
+    font-size: clamp(3.5rem, 8vw, 6.2rem);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+/* Color rojo corporativo para resaltar */
+.hero h1 em {
+    color: var(--accent);
+    font-style: normal;
+}
+
+/* Ajustes de legibilidad para el texto secundario sobre el fondo oscuro */
+.hero-copy {
+    max-width: 32rem;
+    margin: 1.5rem 0 0;
+    color: #e2ded7;
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    font-weight: 500;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+}
 
         .eyebrow {
             display: inline-flex;
@@ -1005,35 +1038,25 @@
 
     <main id="conteudo">
         <section class="hero" id="topo">
-            <div class="container hero-grid">
-                <div>
-                    <p class="eyebrow">Lotes reais. Descobertas imprevisíveis.</p>
-                    <h1>O próximo achado ainda está por <em>abrir.</em></h1>
-                    <p class="hero-copy">Descarregamos, abrimos, montamos e selecionamos as melhores peças.</p>
+    <div class="container hero-grid">
+        <div>
+            <p class="eyebrow">Lotes reais. Descobertas imprevisíveis.</p>
+            <h1>O próximo achado ainda está por <em>abrir.</em></h1>
+            <p class="hero-copy">Descarregamos, abrimos, montamos e selecionamos as melhores peças.</p>
 
-                    <div class="hero-actions">
-                        <a class="button button-primary" href="https://www.tiktok.com/@flashstock.pt" target="_blank" rel="noopener noreferrer">Ver novidades no TikTok <span class="arrow" aria-hidden="true">↗</span></a>
-                        <a class="button button-secondary" href="https://www.instagram.com/flash_stock.pt/" target="_blank" rel="noopener noreferrer">Seguir no Instagram</a>
-                    </div>
-
-                    <p class="hero-note">Quando uma peça está pronta, mostramos nas redes.</p>
-                </div>
-
-                <div class="hero-visual" aria-label="Do lote à peça montada">
-                    <figure class="hero-photo hero-photo-main">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1100&amp;q=86" alt="Área logística com caixas e paletes, imagem ilustrativa da chegada de um lote" fetchpriority="high">
-                        <figcaption class="photo-label">Chega fechado. Abre-se por dentro.</figcaption>
-                    </figure>
-
-                    <figure class="hero-photo hero-photo-small">
-                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&amp;fit=crop&amp;w=700&amp;q=86" alt="Sofá montado, exemplo ilustrativo de uma peça preparada">
-                        <figcaption class="photo-label">Montar · verificar · selecionar</figcaption>
-                    </figure>
-
-                    <div class="hero-badge"><strong>?</strong>Cada lote começa por uma surpresa.</div>
-                </div>
+            <div class="hero-actions">
+                <a class="button button-primary" href="https://www.tiktok.com/@flashstock.pt" target="_blank" rel="noopener noreferrer">
+                    Ver novidades no TikTok <span class="arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="button button-secondary" href="https://www.instagram.com/flash_stock.pt/" target="_blank" rel="noopener noreferrer">
+                    Seguir no Instagram
+                </a>
             </div>
-        </section>
+
+            <p class="hero-note">Quando uma peça está pronta, mostramos nas redes.</p>
+        </div>
+    </div>
+</section>
 
         <div class="signal-strip" aria-label="Etapas do processo FlashStock">
             <ol class="container signal-list">
