@@ -1,276 +1,1207 @@
 <!DOCTYPE html>
-<html lang="pt" dir="ltr">
+<html lang="pt-PT">
 <head>
-    <meta charSet="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'SF Pro Display', '-apple-system', 'sans-serif'],
-                    }
-                }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b0b0c">
+
+    <title>FlashStock — O próximo achado ainda está por abrir</title>
+    <meta name="description" content="Recebemos lotes sem catálogo, abrimos, montamos e selecionamos as peças que merecem uma nova oportunidade. As novidades reais aparecem nas redes FlashStock.">
+    <link rel="canonical" href="https://www.flashstock.pt/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_PT">
+    <meta property="og:site_name" content="FlashStock">
+    <meta property="og:title" content="FlashStock — O próximo achado ainda está por abrir">
+    <meta property="og:description" content="Lotes sem catálogo. Peças abertas, montadas e selecionadas. Descobre as novidades reais nas nossas redes.">
+    <meta property="og:url" content="https://www.flashstock.pt/">
+    <meta property="og:image" content="https://www.flashstock.pt/assets/flashstock-social.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="627">
+    <meta property="og:image:alt" content="FlashStock: o próximo achado ainda está por abrir">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FlashStock — O próximo achado ainda está por abrir">
+    <meta name="twitter:description" content="Lotes sem catálogo. Peças abertas, montadas e selecionadas. Descobre as novidades reais nas nossas redes.">
+    <meta name="twitter:image" content="https://www.flashstock.pt/assets/flashstock-social.jpg">
+
+    <link rel="preconnect" href="https://images.unsplash.com">
+
+    <style>
+        :root {
+            --bg: #0b0b0c;
+            --surface: #121214;
+            --surface-soft: #18181b;
+            --line: rgba(255, 255, 255, 0.1);
+            --line-strong: rgba(255, 255, 255, 0.18);
+            --text: #f5f2ed;
+            --muted: #aaa6a1;
+            --quiet: #77736f;
+            --accent: #ef4b3f;
+            --accent-strong: #ff5b4f;
+            --accent-dark: #6c1e1a;
+            --cream: #efe4d4;
+            --green: #9fb99b;
+            --radius: 1.25rem;
+            --max: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 16px;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            content: "";
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 84% 8%, rgba(239, 75, 63, 0.12), transparent 31rem),
+                linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+            background-size: auto, 4rem 4rem, 4rem 4rem;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--cream);
+            outline-offset: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 0.75rem;
+            left: 0.75rem;
+            z-index: 100;
+            padding: 0.7rem 1rem;
+            border-radius: 0.5rem;
+            background: var(--cream);
+            color: #171311;
+            font-weight: 800;
+            transform: translateY(-160%);
+            transition: transform 180ms ease;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        .container {
+            width: min(calc(100% - 2rem), var(--max));
+            margin-inline: auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid var(--line);
+            background: rgba(11, 11, 12, 0.88);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav {
+            min-height: 4.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.15rem;
+            text-decoration: none;
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: -0.065em;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.7rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 180ms ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta,
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            min-height: 2.8rem;
+            padding: 0.75rem 1.05rem;
+            border: 1px solid transparent;
+            border-radius: 0.75rem;
+            font-size: 0.82rem;
+            font-weight: 850;
+            text-decoration: none;
+            transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+        }
+
+        .nav-cta,
+        .button-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 14px 34px rgba(239, 75, 63, 0.2);
+        }
+
+        .nav-cta:hover,
+        .button-primary:hover {
+            background: var(--accent-strong);
+            transform: translateY(-2px);
+        }
+
+        .button-secondary {
+            border-color: var(--line-strong);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+        }
+
+        .button-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.34);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .arrow {
+            font-size: 1.05rem;
+            line-height: 1;
+        }
+
+        .hero {
+            min-height: calc(100vh - 4.75rem);
+            display: grid;
+            align-items: center;
+            padding: clamp(4rem, 9vw, 7.5rem) 0 4rem;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+            align-items: center;
+            gap: clamp(3rem, 7vw, 6.5rem);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            width: fit-content;
+            margin: 0 0 1.25rem;
+            color: #ff9188;
+            font-size: 0.75rem;
+            font-weight: 850;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 5px rgba(239, 75, 63, 0.13);
+            content: "";
+        }
+
+        .hero h1 {
+            max-width: 12ch;
+            margin: 0;
+            font-size: clamp(3.3rem, 7vw, 6.8rem);
+            line-height: 0.94;
+            letter-spacing: -0.075em;
+        }
+
+        .hero h1 em {
+            color: var(--accent);
+            font-style: normal;
+        }
+
+        .hero-copy {
+            max-width: 38rem;
+            margin: 1.8rem 0 0;
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.18rem);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .hero-note {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin: 1.35rem 0 0;
+            color: var(--quiet);
+            font-size: 0.78rem;
+            font-weight: 650;
+        }
+
+        .hero-note::before {
+            width: 1.8rem;
+            height: 1px;
+            background: var(--line-strong);
+            content: "";
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 39rem;
+        }
+
+        .hero-photo {
+            position: absolute;
+            overflow: hidden;
+            border: 1px solid var(--line-strong);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.88) contrast(1.04);
+        }
+
+        .hero-photo-main {
+            inset: 0 2.7rem 5.4rem 0;
+        }
+
+        .hero-photo-small {
+            right: 0;
+            bottom: 0;
+            width: 56%;
+            height: 16rem;
+            border: 0.45rem solid var(--bg);
+        }
+
+        .hero-photo-main::after,
+        .category-card::after {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, transparent 47%, rgba(0, 0, 0, 0.72));
+            content: "";
+        }
+
+        .photo-label {
+            position: absolute;
+            left: 1.2rem;
+            bottom: 1.2rem;
+            z-index: 2;
+            padding: 0.55rem 0.72rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 0.55rem;
+            background: rgba(8, 8, 9, 0.78);
+            color: #f4eee7;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-badge {
+            position: absolute;
+            top: 2.2rem;
+            right: 0;
+            z-index: 4;
+            width: 9rem;
+            padding: 1rem;
+            border: 1px solid rgba(239, 75, 63, 0.34);
+            border-radius: 1rem;
+            background: rgba(22, 12, 12, 0.9);
+            color: #ffb1aa;
+            font-size: 0.72rem;
+            font-weight: 800;
+            line-height: 1.35;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge strong {
+            display: block;
+            margin-bottom: 0.28rem;
+            color: white;
+            font-size: 1.55rem;
+            letter-spacing: -0.05em;
+        }
+
+        .signal-strip {
+            border-block: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .signal-list {
+            min-height: 5.5rem;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .signal-list li {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            color: var(--muted);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .signal-list li:not(:last-child)::after {
+            position: absolute;
+            right: -0.2rem;
+            color: var(--accent);
+            content: "→";
+        }
+
+        .section {
+            padding: clamp(5.5rem, 10vw, 9rem) 0;
+        }
+
+        .section-kicker {
+            margin: 0 0 0.8rem;
+            color: var(--accent);
+            font-size: 0.74rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            max-width: 16ch;
+            margin: 0;
+            font-size: clamp(2.35rem, 5vw, 4.65rem);
+            line-height: 0.99;
+            letter-spacing: -0.06em;
+        }
+
+        .section-intro {
+            max-width: 42rem;
+            margin: 1.2rem 0 0;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .process-header,
+        .categories-header,
+        .social-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 3rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .process-header .section-intro,
+        .categories-header .section-intro,
+        .social-header .section-intro {
+            max-width: 32rem;
+            margin: 0;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--surface);
+        }
+
+        .process-step {
+            min-height: 19rem;
+            display: flex;
+            flex-direction: column;
+            padding: 1.6rem;
+        }
+
+        .process-step:not(:last-child) {
+            border-right: 1px solid var(--line);
+        }
+
+        .step-number {
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+        }
+
+        .process-step h3 {
+            margin: auto 0 0.65rem;
+            font-size: 1.32rem;
+            letter-spacing: -0.035em;
+        }
+
+        .process-step p {
+            min-height: 4.8rem;
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .selection-banner {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(3rem, 7vw, 5.5rem);
+            border: 1px solid rgba(239, 75, 63, 0.35);
+            border-radius: calc(var(--radius) + 0.25rem);
+            background:
+                linear-gradient(110deg, rgba(239, 75, 63, 0.18), transparent 52%),
+                var(--surface);
+        }
+
+        .selection-banner::after {
+            position: absolute;
+            right: -4rem;
+            bottom: -8rem;
+            width: 25rem;
+            height: 25rem;
+            border: 1px solid rgba(239, 75, 63, 0.2);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .selection-banner blockquote {
+            position: relative;
+            z-index: 1;
+            max-width: 18ch;
+            margin: 0;
+            font-size: clamp(2.35rem, 6vw, 5.35rem);
+            font-weight: 900;
+            line-height: 0.98;
+            letter-spacing: -0.065em;
+        }
+
+        .selection-banner p {
+            position: relative;
+            z-index: 1;
+            max-width: 38rem;
+            margin: 1.4rem 0 0;
+            color: #c9c1b9;
+        }
+
+        .categories {
+            background: #efebe4;
+            color: #1b1816;
+        }
+
+        .categories .section-kicker {
+            color: #b8322a;
+        }
+
+        .categories .section-intro {
+            color: #625c56;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 15.5rem;
+            gap: 1rem;
+        }
+
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.1rem;
+            background: #26211f;
+            color: white;
+            isolation: isolate;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.88) contrast(1.02);
+            transition: transform 420ms ease, filter 420ms ease;
+        }
+
+        .category-card:hover img {
+            filter: saturate(1) contrast(1.03);
+            transform: scale(1.025);
+        }
+
+        .category-card h3 {
+            position: absolute;
+            left: 1.25rem;
+            bottom: 1.2rem;
+            z-index: 2;
+            max-width: 85%;
+            margin: 0;
+            font-size: clamp(1.2rem, 2vw, 1.7rem);
+            line-height: 1;
+            letter-spacing: -0.045em;
+        }
+
+        .category-card span {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 2;
+            padding: 0.45rem 0.58rem;
+            border-radius: 0.45rem;
+            background: rgba(18, 15, 14, 0.76);
+            color: #f1e9df;
+            font-size: 0.63rem;
+            font-weight: 900;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+        }
+
+        .category-large {
+            grid-column: span 7;
+            grid-row: span 2;
+        }
+
+        .category-wide {
+            grid-column: span 5;
+        }
+
+        .category-small {
+            grid-column: span 4;
+        }
+
+        .category-note {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin: 1.4rem 0 0;
+            color: #6a625c;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .category-note::before {
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 50%;
+            background: var(--accent);
+            content: "";
+        }
+
+        .activation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .activation-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 22rem;
+            padding: clamp(1.75rem, 4vw, 3rem);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--surface);
+        }
+
+        .activation-card-accent {
+            background: var(--accent);
+            color: white;
+        }
+
+        .activation-card .tag {
+            margin: 0;
+            color: var(--accent);
+            font-size: 0.68rem;
+            font-weight: 900;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .activation-card-accent .tag {
+            color: #54120f;
+        }
+
+        .activation-card h3 {
+            max-width: 13ch;
+            margin: auto 0 0.85rem;
+            font-size: clamp(2rem, 4vw, 3.55rem);
+            line-height: 0.98;
+            letter-spacing: -0.06em;
+        }
+
+        .activation-card p:last-child {
+            max-width: 33rem;
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .activation-card-accent p:last-child {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .social-section {
+            border-top: 1px solid var(--line);
+            background: #09090a;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 1rem;
+        }
+
+        .social-card {
+            position: relative;
+            min-height: 23rem;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: clamp(1.7rem, 4vw, 3rem);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--surface);
+            text-decoration: none;
+            transition: transform 200ms ease, border-color 200ms ease;
+        }
+
+        .social-card:hover {
+            border-color: rgba(255, 255, 255, 0.28);
+            transform: translateY(-4px);
+        }
+
+        .social-card-primary {
+            background:
+                radial-gradient(circle at 80% 20%, rgba(239, 75, 63, 0.24), transparent 14rem),
+                #151214;
+        }
+
+        .social-mark {
+            width: 3.2rem;
+            height: 3.2rem;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line-strong);
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            font-size: 0.8rem;
+            font-weight: 950;
+            letter-spacing: -0.04em;
+        }
+
+        .social-card h3 {
+            margin: auto 0 0.55rem;
+            font-size: clamp(2.1rem, 4.5vw, 4rem);
+            line-height: 1;
+            letter-spacing: -0.065em;
+        }
+
+        .social-handle {
+            margin: 0;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 850;
+        }
+
+        .social-card p:last-of-type {
+            max-width: 35rem;
+            margin: 1rem 0 0;
+            color: var(--muted);
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-top: 1.7rem;
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        footer {
+            padding: 2rem 0;
+            border-top: 1px solid var(--line);
+            color: var(--quiet);
+        }
+
+        .footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .footer-row p {
+            margin: 0;
+            font-size: 0.75rem;
+            font-weight: 650;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            font-size: 0.75rem;
+            font-weight: 750;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 940px) {
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                max-width: 11ch;
+            }
+
+            .hero-visual {
+                min-height: 32rem;
+            }
+
+            .process-header,
+            .categories-header,
+            .social-header {
+                align-items: start;
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process-step:nth-child(2) {
+                border-right: none;
+            }
+
+            .process-step:nth-child(-n + 2) {
+                border-bottom: 1px solid var(--line);
+            }
+
+            .category-large,
+            .category-wide,
+            .category-small {
+                grid-column: span 6;
+                grid-row: span 1;
             }
         }
-    </script>
-    <meta name="theme-color" content="#dc2626"/>
-    <title>FlashStock</title>
-    <meta name="description" content="Excedentes de stock e liquidações das grandes plataformas mundiais. Artigos funcionais e testados. Lotes novos todas as semanas."/>
-    <meta name="application-name" content="FlashStock"/>
-    <meta property="og:title" content="FlashStock"/>
-    <meta property="og:description" content="Excedentes de stock e liquidações das grandes plataformas mundiais. Artigos funcionais e testados. Lotes novos todas as semanas."/>
-    <meta property="og:type" content="website"/>
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="FlashStock"/>
-    <meta name="twitter:description" content="Excedentes de stock e liquidações das grandes plataformas mundiais. Artigos funcionais e testados. Lotes novos todas as semanas."/>
-</head>
-<body class="min-h-screen bg-black font-sans text-zinc-200 antialiased">
 
-    <header class="sticky top-0 z-40 w-full border-b border-zinc-900 bg-zinc-950/95 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/80">
-        <nav aria-label="Primary" class="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4">
-            <a class="text-xl md:text-2xl font-black tracking-tighter text-white " href="/">
-                Flash<span class="text-red-600">Stock</span>
-            </a>
-            
-            <div class="hidden items-center gap-4 md:flex">
-                <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#como-funciona">Como Funciona</a>
-                <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#galeria-armazem">O Armazém</a>
-                <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#stock">Categorias</a>
-                <a class="inline-flex items-center justify-center font-medium transition-colors h-8 rounded-md px-3 text-xs text-zinc-400 hover:text-white hover:bg-zinc-900" href="#armazens">Armazéns</a>
+        @media (max-width: 760px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: clamp(3rem, 15vw, 5rem);
+            }
+
+            .hero-visual {
+                min-height: 26rem;
+            }
+
+            .hero-photo-main {
+                inset: 0 1.2rem 4rem 0;
+            }
+
+            .hero-photo-small {
+                width: 60%;
+                height: 12rem;
+            }
+
+            .hero-badge {
+                top: 1.2rem;
+                width: 8rem;
+            }
+
+            .signal-list {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+                padding: 1.35rem 0;
+            }
+
+            .signal-list li {
+                justify-content: flex-start;
+            }
+
+            .signal-list li:not(:last-child)::after {
+                position: static;
+                order: -1;
+                content: "•";
+            }
+
+            .process-grid,
+            .activation-grid,
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step {
+                min-height: 15rem;
+                border-right: none !important;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .process-step:last-child {
+                border-bottom: none;
+            }
+
+            .category-grid {
+                grid-auto-rows: 14rem;
+            }
+
+            .category-large,
+            .category-wide,
+            .category-small {
+                grid-column: 1 / -1;
+            }
+
+            .footer-row {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: min(calc(100% - 1.25rem), var(--max));
+            }
+
+            .nav {
+                min-height: 4.25rem;
+            }
+
+            .brand {
+                font-size: 1.25rem;
+            }
+
+            .nav-cta {
+                min-height: 2.5rem;
+                padding: 0.6rem 0.8rem;
+                font-size: 0.72rem;
+            }
+
+            .hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .hero-visual {
+                min-height: 22rem;
+            }
+
+            .hero-badge {
+                display: none;
+            }
+
+            .hero-photo-main {
+                inset: 0 0.65rem 3rem 0;
+            }
+
+            .hero-photo-small {
+                width: 65%;
+                height: 9.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+
+    <header class="site-header">
+        <nav class="container nav" aria-label="Navegação principal">
+            <a class="brand" href="#topo" aria-label="FlashStock, início">Flash<span>Stock</span></a>
+
+            <div class="nav-links">
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#categorias">O que pode aparecer</a>
+                <a href="#quando">Como acompanhar</a>
             </div>
-            
-            <div class="flex items-center gap-1">
-                <a class="inline-flex items-center justify-center font-bold shadow h-8 rounded-md px-4 text-xs bg-red-600 hover:bg-red-500 text-white transition-colors" href="#alertas-vip">Alertas VIP</a>
-            </div>
+
+            <a class="nav-cta" href="#redes">Ver novidades <span class="arrow" aria-hidden="true">↗</span></a>
         </nav>
     </header>
 
-    <!-- HERO SECTION CON MOSAICO DE IMÁGENES ASIMÉTRICO EN DESKTOP -->
-    <section class="relative min-h-[92vh] flex items-center overflow-hidden bg-black py-12 lg:py-20">
-        <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(220, 32, 32, 0.08) 0%, transparent 70%)"></div>
-        <div class="absolute inset-0 opacity-[0.02] pointer-events-none" style="background-image:linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);background-size:3rem 3rem"></div>
-        
-        <div class="mx-auto max-w-screen-xl px-4 relative z-10 w-full">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
-                
-                <div class="lg:col-span-6 flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
-                    <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 font-semibold transition-colors w-fit text-red-400 bg-red-950/40 border-red-900/50 text-xs">
-                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-red-500 mr-1.5 animate-pulse"></span>
-                        Stock em rotação — novos lotes todas as semanas
-                    </div>
-                    
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight font-black text-white">
-                        O Grande Armazém de <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-500">Oportunidades Líquidas</span> em Portugal.
-                    </h1>
-                    
-                    <p class="text-base text-zinc-400 max-w-xl leading-relaxed">
-                        Excedentes de stock e liquidações das grandes plataformas mundiais. Artigos funcionais e testados. Lotes novos todas as semanas.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row items-center gap-3 pt-2 w-full sm:w-auto">
-                        <a href="https://wa.me/#" target="_blank" class="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold px-6 py-4 text-sm shadow-xl shadow-red-900/30 transition-all transform hover:scale-[1.01]">
-                            <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24">
-                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-3.559c1.649.979 3.26 1.489 4.854 1.491 5.462.002 9.904-4.43 9.907-9.895.002-2.648-1.02-5.139-2.879-7c-1.859-1.862-4.332-2.887-6.98-2.888-5.465 0-9.907 4.432-9.91 9.897-.001 1.708.455 3.378 1.32 4.884l-.991 3.62 3.71-.973zm13.114-6.388c-.287-.144-1.701-.84-1.963-.935-.262-.095-.453-.144-.643.144-.19.287-.738.935-.904 1.127-.166.19-.332.215-.619.072-.287-.144-1.21-.446-2.306-1.425-.853-.761-1.428-1.7-1.595-1.988-.166-.287-.018-.442.125-.584.129-.128.287-.335.43-.502.144-.167.191-.287.287-.478.095-.19.047-.359-.024-.502-.071-.144-.643-1.553-.881-2.127-.231-.554-.467-.48-.643-.489-.166-.008-.357-.01-.55-.01-.193 0-.507.072-.772.359-.266.287-1.011.988-1.011 2.409s1.034 2.796 1.177 2.988c.143.19 2.036 3.108 4.931 4.36.688.298 1.226.476 1.646.609.692.22 1.322.189 1.82.115.553-.083 1.701-.696 1.942-1.368.24-.672.24-1.246.168-1.368-.071-.122-.263-.215-.55-.359z"/>
-                            </svg>
-                            Aceder ao Canal Oficial de Alertas (WhatsApp)
-                        </a>
-                    </div>
-                    <p class="text-xs text-red-500 font-bold tracking-wide uppercase mt-1">⚠️ O que encontras hoje, amanhã já voou.</p>
-                </div>
-                
-                <!-- MOSAICO VISUAL EN DESKTOP (3 imágenes estratégicas de almacén + panel de control) -->
-                <div class="lg:col-span-6 hidden lg:grid grid-cols-12 gap-4 items-center relative">
-                    <div class="col-span-6 flex flex-col gap-4">
-                        <div class="relative rounded-2xl overflow-hidden border border-zinc-900 shadow-2xl h-48 group">
-                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80" alt="Paletes e caixas" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"/>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                        </div>
-                        <div class="relative rounded-2xl overflow-hidden border border-zinc-900 shadow-2xl h-64 group">
-                            <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=400&q=80" alt="Logística Hub" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"/>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                        </div>
-                    </div>
-                    <div class="col-span-6 flex flex-col gap-4 pt-12">
-                        <div class="relative rounded-2xl overflow-hidden border border-zinc-900 bg-zinc-950 p-4 shadow-2xl">
-                            <div class="flex items-center gap-2 mb-3 pb-2 border-b border-zinc-900">
-                                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                                <p class="text-[10px] uppercase font-black tracking-wider text-zinc-400">Última Entrada</p>
-                            </div>
-                            <div class="space-y-2">
-                                <div class="text-xs bg-zinc-900/50 p-2 rounded border border-zinc-800 flex justify-between items-center">
-                                    <span class="text-zinc-300 font-bold">Smart TV 4K 55"</span>
-                                    <span class="text-[10px] text-red-400 font-mono">Liquidado</span>
-                                </div>
-                                <div class="text-xs bg-zinc-900/50 p-2 rounded border border-zinc-800 flex justify-between items-center">
-                                    <span class="text-zinc-300 font-bold">Sofá Retrátil</span>
-                                    <span class="text-[10px] text-red-400 font-mono">Liquidado</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="relative rounded-2xl overflow-hidden border border-zinc-900 shadow-2xl h-48 group">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Mobiliário Descarga" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"/>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN CÓMO FUNCIONA -->
-    <section id="como-funciona" class="py-16 bg-zinc-950 border-y border-zinc-900">
-        <div class="mx-auto max-w-screen-xl px-4">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="flex flex-col gap-3 p-6 rounded-xl bg-black border border-zinc-900">
-                    <div class="flex h-10 w-10 rounded-lg bg-zinc-900 border border-zinc-800 text-red-500 items-center justify-center font-black text-sm">01</div>
-                    <h3 class="font-bold text-base text-white">Rotação Constante</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed">O nosso stock muda drasticamente todas as semanas. O que encontras hoje, amanhã já voou.</p>
-                </div>
-                <div class="flex flex-col gap-3 p-6 rounded-xl bg-black border border-zinc-900">
-                    <div class="flex h-10 w-10 rounded-lg bg-zinc-900 border border-zinc-800 text-red-500 items-center justify-center font-black text-sm">02</div>
-                    <h3 class="font-bold text-base text-white">Artigos Inspecionados</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed">Filtramos e verificamos o estado de cada unidade para garantir transparência e funcionalidade total. Não compras às cegas.</p>
-                </div>
-                <div class="flex flex-col gap-3 p-6 rounded-xl bg-black border border-zinc-900">
-                    <div class="flex h-10 w-10 rounded-lg bg-zinc-900 border border-zinc-800 text-red-500 items-center justify-center font-black text-sm">03</div>
-                    <h3 class="font-bold text-base text-white">Apenas na Loja Física</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed">Vês as oportunidades online, reservas e levantas diretamente num dos nossos dois armazéns.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NUEVA SECCIÓN VISUAL DESKTOP: GALERÍA DE FLUJO REAL / UNBOXING -->
-    <section id="galeria-armazem" class="py-16 bg-black">
-        <div class="mx-auto max-w-screen-xl px-4">
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-10">
+    <main id="conteudo">
+        <section class="hero" id="topo">
+            <div class="container hero-grid">
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">O Ambiente do Nosso Armazém</h2>
-                    <p class="text-sm text-zinc-500 max-w-md mt-1">Lotes em triagem direta vindos das devoluções e excedentes europeus.</p>
+                    <p class="eyebrow">Lotes reais. Descobertas imprevisíveis.</p>
+                    <h1>Só sabemos o que chegou depois de <em>abrir.</em></h1>
+                    <p class="hero-copy">Recebemos lotes sem catálogo. Descarregamos, abrimos, montamos e selecionamos as peças que merecem uma nova oportunidade.</p>
+
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="https://www.tiktok.com/@flashstock.pt" target="_blank" rel="noopener noreferrer">Ver novidades no TikTok <span class="arrow" aria-hidden="true">↗</span></a>
+                        <a class="button button-secondary" href="https://www.instagram.com/flash_stock.pt/" target="_blank" rel="noopener noreferrer">Seguir no Instagram</a>
+                    </div>
+
+                    <p class="hero-note">Quando uma peça está pronta, mostramos nas redes.</p>
                 </div>
-                <div class="text-xs bg-zinc-950 border border-zinc-900 p-3 rounded-lg text-zinc-400 font-mono">
-                    💡 <span class="text-white font-bold">Processo Real:</span> Abrimos as caixas, testamos os componentes e publicamos os achados.
+
+                <div class="hero-visual" aria-label="Do lote à peça montada">
+                    <figure class="hero-photo hero-photo-main">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=1100&amp;q=86" alt="Área logística com caixas e paletes, imagem ilustrativa da chegada de um lote" fetchpriority="high">
+                        <figcaption class="photo-label">Chega fechado. Abre-se por dentro.</figcaption>
+                    </figure>
+
+                    <figure class="hero-photo hero-photo-small">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&amp;fit=crop&amp;w=700&amp;q=86" alt="Sofá montado, exemplo ilustrativo de uma peça preparada">
+                        <figcaption class="photo-label">Montar · verificar · selecionar</figcaption>
+                    </figure>
+
+                    <div class="hero-badge"><strong>?</strong>Cada lote começa por uma surpresa.</div>
                 </div>
             </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="h-64 rounded-xl overflow-hidden border border-zinc-900 group relative">
-                    <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=400&q=80" alt="Lote unboxing" class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>
-                    <div class="absolute bottom-3 left-3 bg-black/80 px-2 py-1 text-[10px] text-zinc-400 font-mono rounded">Triagem Inicial</div>
-                </div>
-                <div class="h-64 rounded-xl overflow-hidden border border-zinc-900 group relative">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80" alt="Inspeção" class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>
-                    <div class="absolute bottom-3 left-3 bg-black/80 px-2 py-1 text-[10px] text-zinc-400 font-mono rounded">Área de Testes</div>
-                </div>
-                <div class="h-64 rounded-xl overflow-hidden border border-zinc-900 group relative">
-                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=400&q=80" alt="Showroom rápido" class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>
-                    <div class="absolute bottom-3 left-3 bg-black/80 px-2 py-1 text-[10px] text-zinc-400 font-mono rounded">Showroom Local</div>
-                </div>
-                <div class="h-64 rounded-xl overflow-hidden border border-zinc-900 group relative">
-                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=400&q=80" alt="Camião descarga" class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>
-                    <div class="absolute bottom-3 left-3 bg-black/80 px-2 py-1 text-[10px] text-zinc-400 font-mono rounded">Carga Semanal</div>
-                </div>
-            </div>
+        </section>
+
+        <div class="signal-strip" aria-label="Etapas do processo FlashStock">
+            <ol class="container signal-list">
+                <li>Receber</li>
+                <li>Abrir</li>
+                <li>Montar</li>
+                <li>Selecionar</li>
+                <li>Publicar</li>
+            </ol>
         </div>
-    </section>
 
-    <!-- SECCIÓN CATEGORÍAS FLUIDAS -->
-    <section id="stock" class="py-16 bg-zinc-950 border-t border-zinc-900">
-        <div class="mx-auto max-w-screen-xl px-4">
-            <div class="flex flex-col items-center text-center gap-3 mb-12">
-                <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">O Tipo de Artigos que Encontras</h2>
-                <p class="text-sm text-zinc-500 max-w-md">Variedade fluida de alta rotação proveniente de liquidações globais.</p>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div class="rounded-xl border border-zinc-900 shadow-sm relative overflow-hidden bg-black group hover:border-zinc-800 transition-all">
-                    <span class="absolute top-3 left-3 z-10 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5">Lotes Fluídos</span>
-                    <div class="p-5 flex flex-col gap-4">
-                        <div class="aspect-[16/10] w-full overflow-hidden rounded-lg border border-zinc-900 bg-zinc-950">
-                            <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=500&q=80" alt="Tecnologia e Imagem" class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <h3 class="text-base font-bold text-zinc-200">Tecnologia & Imagem</h3>
-                        </div>
-                        <a href="https://wa.me/#" target="_blank" class="w-full text-center bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-bold text-xs py-2.5 rounded-lg border border-zinc-800 transition-colors">Ver no WhatsApp</a>
+        <section class="section" id="como-funciona">
+            <div class="container">
+                <div class="process-header">
+                    <div>
+                        <p class="section-kicker">Como funciona</p>
+                        <h2 class="section-title">Do contentor ao achado.</h2>
                     </div>
+                    <p class="section-intro">O contentor faz parte da origem, não da experiência de compra. A descarga e a preparação acontecem antes de o público conhecer as peças.</p>
                 </div>
 
-                <div class="rounded-xl border border-zinc-900 shadow-sm relative overflow-hidden bg-black group hover:border-zinc-800 transition-all">
-                    <span class="absolute top-3 left-3 z-10 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5">Apenas 1 unidade</span>
-                    <div class="p-5 flex flex-col gap-4">
-                        <div class="aspect-[16/10] w-full overflow-hidden rounded-lg border border-zinc-900 bg-zinc-950">
-                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80" alt="Eletrodomésticos" class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <h3 class="text-base font-bold text-zinc-200">Eletrodomésticos & Lar</h3>
-                        </div>
-                        <a href="https://wa.me/#" target="_blank" class="w-full text-center bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-bold text-xs py-2.5 rounded-lg border border-zinc-800 transition-colors">Ver no WhatsApp</a>
-                    </div>
-                </div>
+                <div class="process-grid">
+                    <article class="process-step">
+                        <span class="step-number">01 · CHEGADA</span>
+                        <h3>O lote chega sem catálogo.</h3>
+                        <p>Recebemos caixas e peças sem saber exatamente o que estará em condições de avançar.</p>
+                    </article>
 
-                <div class="rounded-xl border border-zinc-900 shadow-sm relative overflow-hidden bg-black group hover:border-zinc-800 transition-all">
-                    <span class="absolute top-3 left-3 z-10 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5">Lotes Fluídos</span>
-                    <div class="p-5 flex flex-col gap-4">
-                        <div class="aspect-[16/10] w-full overflow-hidden rounded-lg border border-zinc-900 bg-zinc-950">
-                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=500&q=80" alt="Mobiliário Oportunidade" class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <h3 class="text-base font-bold text-zinc-200">Mobiliário Oportunidade</h3>
-                        </div>
-                        <a href="https://wa.me/#" target="_blank" class="w-full text-center bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-bold text-xs py-2.5 rounded-lg border border-zinc-800 transition-colors">Ver no WhatsApp</a>
-                    </div>
+                    <article class="process-step">
+                        <span class="step-number">02 · DESCOBERTA</span>
+                        <h3>Abrimos e fazemos a triagem.</h3>
+                        <p>Identificamos o que chegou, se está completo e se vale a pena continuar a preparação.</p>
+                    </article>
+
+                    <article class="process-step">
+                        <span class="step-number">03 · PREPARAÇÃO</span>
+                        <h3>Montamos e verificamos.</h3>
+                        <p>Nos móveis, a montagem revela o estado real. O que não é aproveitável fica fora da seleção.</p>
+                    </article>
+
+                    <article class="process-step">
+                        <span class="step-number">04 · NOVIDADE</span>
+                        <h3>Mostramos apenas o que avançou.</h3>
+                        <p>As peças preparadas aparecem nas redes, em aberturas pontuais ou noutros canais ativos.</p>
+                    </article>
                 </div>
             </div>
-            <p class="mt-8 text-center text-sm text-zinc-500 italic">Este é o tipo de artigos que podes encontrar. O stock atual só existe no showroom.</p>
-        </div>
-    </section>
+        </section>
 
-    <!-- SECCIÓN CAPTACIÓN DE LEADS VIP -->
-    <section id="alertas-vip" class="py-16 bg-zinc-900">
-        <div class="mx-auto max-w-screen-xl px-4">
-            <div class="max-w-md mx-auto flex flex-col items-center text-center gap-6">
-                <div class="flex flex-col gap-2">
-                    <h2 class="text-2xl font-black text-white uppercase tracking-tight">Queres acesso antecipado?</h2>
-                    <p class="text-sm text-zinc-400 leading-relaxed">Junta-te à lista VIP para receber alertas no teu email antes de publicarmos no TikTok.</p>
+        <section class="section">
+            <div class="container">
+                <div class="selection-banner">
+                    <p class="section-kicker">A nossa regra mais importante</p>
+                    <blockquote>Nem tudo o que chega passa na nossa seleção.</blockquote>
+                    <p>Não prometemos um stock que ainda não conhecemos. Primeiro abrimos, montamos e avaliamos. Depois mostramos o que realmente existe.</p>
                 </div>
-                <form class="w-full flex flex-col gap-4">
-                    <div class="flex flex-col gap-1.5 text-left">
-                        <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider" for="vip-email">Email</label>
-                        <input type="email" class="w-full h-11 rounded-lg border border-zinc-800 bg-zinc-950 px-4 text-sm text-white placeholder:text-zinc-700 focus:outline-none focus:border-red-600 transition-colors" id="vip-email" placeholder="o.teu@email.com" required/>
+            </div>
+        </section>
+
+        <section class="section categories" id="categorias">
+            <div class="container">
+                <div class="categories-header">
+                    <div>
+                        <p class="section-kicker">O que pode aparecer</p>
+                        <h2 class="section-title">Categorias abertas à surpresa.</h2>
                     </div>
-                    <button class="w-full h-11 rounded-lg bg-red-600 hover:bg-red-500 font-bold text-sm text-white shadow-lg shadow-red-900/20 transition-colors" type="submit">Quero Acesso Antecipado</button>
-                    <p class="text-[11px] text-zinc-600">Sem spam. Apenas alertas de stock real.</p>
-                </form>
-            </div>
-        </div>
-    </section>
+                    <p class="section-intro">Hoje predominam os móveis. Amanhã pode chegar outra coisa. Estas categorias orientam — nunca prometem disponibilidade.</p>
+                </div>
 
-    <!-- FOOTER CON UBICACIONES -->
-    <footer id="armazens" class="bg-black border-t border-zinc-900 py-12 text-zinc-500">
-        <div class="mx-auto max-w-screen-xl px-4 flex flex-col gap-8">
-            <div class="grid sm:grid-cols-2 gap-8 border-b border-zinc-900 pb-8">
-                <div class="flex flex-col gap-2">
-                    <h4 class="font-bold text-sm text-zinc-300 uppercase tracking-wider">Armazém 1 - Portugal</h4>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Disponível para verificação de lotes e levantamento de artigos reservados.</p>
+                <div class="category-grid">
+                    <article class="category-card category-large">
+                        <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&amp;fit=crop&amp;w=1200&amp;q=86" alt="Exemplo ilustrativo de mobiliário para sala" loading="lazy">
+                        <span>Categoria principal</span>
+                        <h3>Móveis</h3>
+                    </article>
+
+                    <article class="category-card category-wide">
+                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&amp;fit=crop&amp;w=900&amp;q=86" alt="Exemplo ilustrativo de cozinha e utilidades para casa" loading="lazy">
+                        <span>Pode aparecer</span>
+                        <h3>Casa, Cozinha &amp; Utilidades</h3>
+                    </article>
+
+                    <article class="category-card category-wide">
+                        <img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&amp;fit=crop&amp;w=900&amp;q=86" alt="Exemplo ilustrativo de iluminação e decoração" loading="lazy">
+                        <span>Pode aparecer</span>
+                        <h3>Iluminação &amp; Decoração</h3>
+                    </article>
+
+                    <article class="category-card category-small">
+                        <img src="https://images.unsplash.com/photo-1761079976271-3a78f547ca67?auto=format&amp;fit=crop&amp;w=800&amp;q=86" alt="Interior de uma máquina de lavar, exemplo ilustrativo de eletrodomésticos" loading="lazy">
+                        <span>Pode aparecer</span>
+                        <h3>Eletrodomésticos</h3>
+                    </article>
+
+                    <article class="category-card category-small">
+                        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&amp;fit=crop&amp;w=800&amp;q=86" alt="Exemplo ilustrativo de tecnologia, imagem e som" loading="lazy">
+                        <span>Pode aparecer</span>
+                        <h3>Tecnologia, Imagem &amp; Som</h3>
+                    </article>
+
+                    <article class="category-card category-small">
+                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&amp;fit=crop&amp;w=800&amp;q=86" alt="Exemplo ilustrativo de objetos inesperados para casa" loading="lazy">
+                        <span>É parte da graça</span>
+                        <h3>Achados Inesperados</h3>
+                    </article>
                 </div>
-                <div class="flex flex-col gap-2">
-                    <h4 class="font-bold text-sm text-zinc-300 uppercase tracking-wider">Armazém 2 - Portugal</h4>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Ponto de recolha local para escoamento rápido de excedentes e mobiliário de oportunidade.</p>
+
+                <p class="category-note">Imagens ilustrativas. As peças reais são publicadas nas redes depois de preparadas.</p>
+            </div>
+        </section>
+
+        <section class="section" id="quando">
+            <div class="container">
+                <div class="activation-grid">
+                    <article class="activation-card">
+                        <p class="tag">Sem calendário rígido</p>
+                        <h3>A abertura é um momento, não uma promessa fixa.</h3>
+                        <p>Um lote pode dar origem a uma abertura especial, a novidades online ou a peças disponíveis em pontos diferentes.</p>
+                    </article>
+
+                    <article class="activation-card activation-card-accent">
+                        <p class="tag">A informação certa, no momento certo</p>
+                        <h3>As redes dizem o que há, onde e quando.</h3>
+                        <p>Publicamos apenas quando existe algo concreto para mostrar. Assim, acompanhas a realidade sem depender de um catálogo desatualizado.</p>
+                    </article>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <p class="text-xs font-bold text-zinc-500">© 2026 Flash Stock (flashstock.pt). Todos os direitos reservados.</p>
-                <a href="https://wa.me/#" target="_blank" class="inline-flex items-center gap-2 rounded-lg bg-red-600 hover:bg-red-500 px-4 py-2 text-xs font-bold text-white transition-colors shadow-md">
-                    Canal Oficial de Alertas (WhatsApp)
-                </a>
+        </section>
+
+        <section class="section social-section" id="redes">
+            <div class="container">
+                <div class="social-header">
+                    <div>
+                        <p class="section-kicker">Novidades reais</p>
+                        <h2 class="section-title">Segue o que está a acontecer.</h2>
+                    </div>
+                    <p class="section-intro">A landing explica a ideia. As redes mostram as peças, as montagens e as oportunidades à medida que aparecem.</p>
+                </div>
+
+                <div class="social-grid">
+                    <a class="social-card social-card-primary" href="https://www.tiktok.com/@flashstock.pt" target="_blank" rel="noopener noreferrer" aria-label="Ver o perfil FlashStock no TikTok">
+                        <span class="social-mark" aria-hidden="true">TT</span>
+                        <h3>TikTok</h3>
+                        <p class="social-handle">@flashstock.pt</p>
+                        <p>Vê as peças em vídeo, o que acabou de chegar e os conteúdos criados a partir de cada descoberta.</p>
+                        <span class="social-link">Ver novidades <span aria-hidden="true">↗</span></span>
+                    </a>
+
+                    <a class="social-card" href="https://www.instagram.com/flash_stock.pt/" target="_blank" rel="noopener noreferrer" aria-label="Ver o perfil FlashStock no Instagram">
+                        <span class="social-mark" aria-hidden="true">IG</span>
+                        <h3>Instagram</h3>
+                        <p class="social-handle">@flash_stock.pt</p>
+                        <p>Segue imagens, stories e atualizações rápidas sobre as próximas novidades FlashStock.</p>
+                        <span class="social-link">Acompanhar <span aria-hidden="true">↗</span></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-row">
+            <p>© 2026 FlashStock.pt · Lotes reais, descobertas imprevisíveis.</p>
+            <div class="footer-links">
+                <a href="https://www.tiktok.com/@flashstock.pt" target="_blank" rel="noopener noreferrer">TikTok</a>
+                <a href="https://www.instagram.com/flash_stock.pt/" target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
         </div>
     </footer>
-
 </body>
 </html>
