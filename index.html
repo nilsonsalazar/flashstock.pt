@@ -412,40 +412,46 @@
             letter-spacing: -0.05em;
         }
 
-        .signal-strip {
-            border-block: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.02);
-        }
+      .signal-strip {
+    width: 100%;
+    border-block: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden; /* Previene cualquier desbordamiento accidental */
+}
 
-        .signal-list {
-            min-height: 5.5rem;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
+.signal-list {
+    min-height: 5.5rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
 
-        .signal-list li {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.65rem;
-            color: var(--muted);
-            font-size: 0.74rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
+.signal-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    color: var(--muted);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: center;
+}
 
-        .signal-list li:not(:last-child)::after {
-            position: absolute;
-            right: -0.2rem;
-            color: var(--accent);
-            content: "→";
-        }
+/* Flecha alineada de forma segura dentro de la celda */
+.signal-list li:not(:last-child)::after {
+    position: absolute;
+    right: 0; /* Cambiado de -0.2rem a 0 para que no empuje el borde */
+    color: var(--accent);
+    content: "→";
+    pointer-events: none;
+}
 
         .section {
             padding: clamp(5.5rem, 10vw, 9rem) 0;
